@@ -34,7 +34,7 @@ bukkit {
     // Defaults
     name = 'template-plugin'
     version = '0.0.1-ALPHA'
-    description = 'This is a test plugin'
+    description = 'This is a template plugin'
     website = 'https://amethystdev.org'
     author = 'Amethyst Organization'
 
