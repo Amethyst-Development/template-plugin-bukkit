@@ -1,15 +1,14 @@
-import net.minecrell.pluginyml.bukkit.BukkitPluginDescription
 import net.minecrell.pluginyml.paper.PaperPluginDescription
 
 plugins {
-  java
-  id("com.github.johnrengelman.shadow") version "7.1.2"
+  id("java")
+  id("com.gradleup.shadow") version "9.0.0-rc2"
   id("xyz.jpenilla.run-paper") version "2.3.1"
   id("de.eldoria.plugin-yml.paper") version "0.7.1"
 }
 
 group = "org.amethystdev"
-version = "0.0.1-ALPHA"
+version = "1.0.0"
 
 repositories {
   mavenCentral()
@@ -20,7 +19,7 @@ dependencies {
 
   // Paper
   compileOnly("io.papermc.paper:paper-api:1.21.8-R0.1-SNAPSHOT")
-  paperLibrary("com.google.code.gson", "gson", "2.10.1")
+  paperLibrary("com.google.code.gson", "gson", "2.13.1")
 
 }
 
@@ -42,7 +41,7 @@ paper {
   authors = listOf("Phrut", "greenlantern456")
 
   // Plugin bootstrapper/loader
-  bootstrapper = "org.amethystdev.Pluginbootstrap"
+  bootstrapper = "org.amethystdev.Bootstrapper"
   loader = "org.amethystdev.PluginLibrariesLoader"
   hasOpenClassloader = false
   generateLibrariesJson = true
@@ -83,8 +82,14 @@ tasks {
       // WorldGuard
       modrinth("worldguard", "7.0.14")
 
-      // Vaullt replacement
+      // Vault replacement
       hangar("ServiceIO","2.2.0")
+
+      // Hangar
+      hangar("PlaceholderAPI", "2.11.6")
+
+      // luckperms
+      url("https://download.luckperms.net/1595/bukkit/loader/LuckPerms-Bukkit-5.5.10.jar")
 
     }
   }
