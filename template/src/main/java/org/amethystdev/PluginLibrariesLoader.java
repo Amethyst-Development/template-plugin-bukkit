@@ -21,19 +21,8 @@ public class PluginLibrariesLoader implements PluginLoader {
     public void classloader(@NotNull PluginClasspathBuilder classpathBuilder) {
         MavenLibraryResolver resolver = new MavenLibraryResolver();
         PluginLibraries pluginLibraries = load();
-            resolver.addRepository(
-        new RemoteRepository.Builder(
-            "central", 
-            "default", 
-            MavenLibraryResolver.MAVEN_CENTRAL_DEFAULT_MIRROR
-        ).build()
-        );
-
         pluginLibraries.asDependencies().forEach(resolver::addDependency);
-        pluginLibraries.asRepositories()
-        .filter(repo -> !repo.getUrl().contains("maven.apache.org"))
-        .forEach(resolver::addRepository);
-        
+        pluginLibraries.asRepositories().forEach(resolver::addRepository);
         classpathBuilder.addLibrary(resolver);
     }
 

@@ -2,9 +2,9 @@ import net.minecrell.pluginyml.paper.PaperPluginDescription
 
 plugins {
   id("java")
-  id("com.gradleup.shadow") version "9.0.0-rc2"
+  id("com.gradleup.shadow") version "9.2.2"
   id("xyz.jpenilla.run-paper") version "2.3.1"
-  id("de.eldoria.plugin-yml.paper") version "0.7.1"
+  id("de.eldoria.plugin-yml.paper") version "0.8.0"
 }
 
 group = "org.amethystdev"
@@ -73,6 +73,10 @@ paper {
 }
 
 tasks {
+  generatePaperPluginDescription {
+    addMavenCentralProxy("google", "https://maven-central.storage-download.googleapis.com/maven2")
+  }
+
   runServer {
     minecraftVersion("1.21.8")
     downloadPlugins {
