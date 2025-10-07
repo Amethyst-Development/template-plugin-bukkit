@@ -21,11 +21,25 @@ dependencies {
   compileOnly("io.papermc.paper:paper-api:1.21.8-R0.1-SNAPSHOT")
   paperLibrary("com.google.code.gson", "gson", "2.13.1")
 
+  // Lamp command framework
+  var lampVer = "4.0.0-rc.13"
+  implementation("io.github.revxrsal:lamp.common:$lampVer")
+  implementation("io.github.revxrsal:lamp.bukkit:$lampVer")
+
+  // MiniPlaceholders
+  compileOnly("io.github.miniplaceholders:miniplaceholders-api:3.0.1")
+
 }
 
 java {
   toolchain {
     languageVersion.set(JavaLanguageVersion.of(21))
+  }
+}
+
+tasks {
+  compileJava {
+    options.release = 21
   }
 }
 
@@ -38,7 +52,7 @@ paper {
   main = "org.amethystdev.Main"
   prefix = "MyPlugin"
   apiVersion = "1.21"
-  authors = listOf("Phrut", "greenlantern456")
+  authors = listOf("Phrut", "The Amethyst Team")
 
   // Plugin bootstrapper/loader
   bootstrapper = "org.amethystdev.Bootstrapper"
@@ -72,6 +86,11 @@ paper {
   }
 }
 
+tasks.withType<JavaCompile> {
+    // Preserve parameter names in the bytecode
+    options.compilerArgs.add("-parameters")
+}
+
 tasks {
   generatePaperPluginDescription {
     addMavenCentralProxy("google", "https://maven-central.storage-download.googleapis.com/maven2")
@@ -80,21 +99,11 @@ tasks {
   runServer {
     minecraftVersion("1.21.8")
     downloadPlugins {
-      // FastAsyncWorldEdit
-      url("https://ci.athion.net/job/FastAsyncWorldEdit/1135/artifact/artifacts/FastAsyncWorldEdit-Paper-2.13.1-SNAPSHOT-1135.jar")
-
-      // WorldGuard
-      modrinth("worldguard", "7.0.14")
 
       // Vault replacement
       hangar("ServiceIO","2.2.0")
 
-      // Hangar
-      hangar("PlaceholderAPI", "2.11.6")
-
-      // luckperms
-      url("https://download.luckperms.net/1595/bukkit/loader/LuckPerms-Bukkit-5.5.10.jar")
-
+      modrinth("miniplaceholders", "7caNTwMh")
     }
   }
 }
