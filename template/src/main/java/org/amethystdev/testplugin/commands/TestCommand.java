@@ -1,4 +1,4 @@
-package org.amethystdev.commands;
+package org.amethystdev.testplugin.commands;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;

@@ -1,4 +1,4 @@
-package org.amethystdev;
+package org.amethystdev.testplugin;
 
 import org.bukkit.plugin.java.JavaPlugin;
 

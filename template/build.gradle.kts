@@ -49,14 +49,14 @@ paper {
   version = "1.0.0"
   description = "My first plugin"
 
-  main = "org.amethystdev.Main"
+  main = "org.amethystdev.testplugin.Main"
   prefix = "MyPlugin"
   apiVersion = "1.21"
   authors = listOf("Phrut", "The Amethyst Team")
 
   // Plugin bootstrapper/loader
-  bootstrapper = "org.amethystdev.Bootstrapper"
-  loader = "org.amethystdev.PluginLibrariesLoader"
+  bootstrapper = "org.amethystdev.testplugin.Bootstrapper"
+  loader = "org.amethystdev.testplugin.PluginLibrariesLoader"
   hasOpenClassloader = false
   generateLibrariesJson = true
 
